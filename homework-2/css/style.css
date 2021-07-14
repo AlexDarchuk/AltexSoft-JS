@@ -110,6 +110,7 @@
 }
 
 .delete-user {
+    visibility: hidden;
     border: none;
     background: none;
     font-size: 30px;
@@ -294,4 +295,5 @@
 }
 .active-delete-btn {
     color: tomato;
+    visibility: visible;
 }

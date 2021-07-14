@@ -3,11 +3,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const tableUser = document.querySelector('.table-user');
     const modal = document.querySelector('.modal');
     const closeBtn = document.querySelectorAll('.fa-times');
-    const checkboxFirst = document.querySelector('.tabel-checkbox-first');
     const valueCompany = document.querySelector('.input-company');
     const valueName = document.querySelector('.input-name');
     const valueAddress = document.querySelector('.input-address');
-    const boxCheckbox = document.querySelector('.box-checkbox');
     const updateUserBtn = document.querySelector('.btn-dark');
     const showPostForm = document.querySelector('.form-btn');
     const modalCreateUser = document.querySelector('.modal-create-user');
@@ -130,13 +128,12 @@ window.addEventListener('DOMContentLoaded', () => {
                     } else {
                         deleteBtn[index].classList.remove('active-delete-btn');
                     }
-                    
                 });
             });
 
             changeData(changeDataBtn);
-            
     }
+    
     
 
     function changeData ( btnPen ) {
@@ -161,7 +158,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    showPostForm.addEventListener('click', () => {
+    showPostForm.addEventListener('click', (e) => {
+        e.preventDefault();
         modalCreateUser.classList.add('show');
     });
     
@@ -182,9 +180,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function updateData ( dataIdUser) {
         let objData = {
-            company: valueCompany.value,
-            name: valueName.value,
-            address: valueAddress.value,
+            company: valueCompany.value.toUpperCase(),
+            name: firstLetterBig(valueName),
+            address:firstLetterBig(valueAddress),
         }
         updateUser(dataIdUser, objData)
     }

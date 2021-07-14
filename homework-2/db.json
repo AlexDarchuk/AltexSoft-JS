@@ -342,8 +342,8 @@
     },
     {
       "id": "5bf8de1a799e0a6396ea4d70",
-      "name": "Leonard Cabrera",
-      "company": "QOT",
+      "name": "Teodor Cabrera",
+      "company": "BCC",
       "address": "Llama Court 238",
       "city": "Cotopaxi, Minnesota, 3686",
       "country": "Saint Lucia",
@@ -379,26 +379,6 @@
       "country": "United States",
       "email": "garrisonmontgomery@sloganaut.com",
       "phone": "+1 (999) 422-3909"
-    },
-    {
-      "id": "5bf8de1ad6f1639d75266a3c",
-      "name": "Stevens Wise",
-      "company": "GUSHKOOL",
-      "address": "Verona Street 989",
-      "city": "Yorklyn, California, 8084",
-      "country": "Maldives",
-      "email": "stevenswise@gushkool.com",
-      "phone": "+1 (999) 444-2207"
-    },
-    {
-      "id": "5bf8de1af3cb6586d30ef9a4",
-      "name": "Lorna Mason",
-      "company": "TROPOLI",
-      "address": "Delmonico Place 572",
-      "city": "Hemlock, Georgia, 9553",
-      "country": "Italy",
-      "email": "lornamason@tropoli.com",
-      "phone": "+1 (816) 590-3925"
     }
   ]
 }
