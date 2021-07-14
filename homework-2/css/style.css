@@ -160,6 +160,10 @@
     position: relative;
 }
 
+.table .table-title .checkbox:first-child {
+    visibility: hidden;
+}
+
 .box-checkbox::after {
     content: '\2714';
     display: block;
