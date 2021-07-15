@@ -379,6 +379,14 @@
       "country": "United States",
       "email": "garrisonmontgomery@sloganaut.com",
       "phone": "+1 (999) 422-3909"
+    },
+    {
+      "name": "Vova",
+      "company": "ALTEXSOFT",
+      "address": "Best street 45",
+      "city": "Lviv",
+      "country": "Ukraine",
+      "id": "U-VCSql"
     }
   ]
 }

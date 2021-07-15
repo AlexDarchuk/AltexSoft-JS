@@ -40,31 +40,31 @@ window.addEventListener('DOMContentLoaded', () => {
     const createUser = async ( obj ) => {
         const create = await fetch( url, {
             method: 'POST',
-            body: JSON.stringify(obj),
+            body: JSON.stringify( obj ),
               headers: {
                 'Content-type': 'application/json; charset=UTF-8',
               },
         });
         
-        if (!create.ok) {
+        if ( !create.ok ) {
             throw new Error(`Someting went wrong, Status code ${create.status}`)
         }
         return await create.json();
     }
     
-    const deleteUser = async (id) => {
-        const response = await fetch(`${url}/${id}`, {
+    const deleteUser = async ( id ) => {
+        const response = await fetch( `${url}/${id}`, {
             method: 'DELETE'
         });
 
-        if (!response.ok) {
+        if ( !response.ok ) {
             throw new Error(`Someting went wrong, Status code ${response.status}`)
         }
         return await response.json();
     }
 
-    const updateUser = async (id, obj) => {
-        const update = await fetch(`${url}/${id}`, {
+    const updateUser = async ( id, obj ) => {
+        const update = await fetch( `${url}/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(obj),
               headers: {
@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    getAllUsers(url)
+    getAllUsers( url )
         .then(value => value.reverse())
         .then(data => {
             data.forEach(({ company, name, address, city, country,id}, index ) => {
@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
     
-    function renderUserInfo(company, name, address, city, country) {
+    function renderUserInfo( company, name, address, city, country ) {
         tableUser.innerHTML += `
         <tr class="table-user-info">
             <td class="table-user-list">
@@ -184,28 +184,28 @@ window.addEventListener('DOMContentLoaded', () => {
             name: firstLetterBig(valueName),
             address:firstLetterBig(valueAddress),
         }
-        updateUser(dataIdUser, objData)
+        updateUser(dataIdUser, objData);
     }
 
     
 
     postBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        createUserData ();
+        createUserData();
     });
 
 
-    function firstLetterBig (atribute) {
+    function firstLetterBig ( atribute ) {
        return atribute.value[0].toUpperCase() + atribute.value.slice(1, atribute.length);
     }
 
     function createUserData() {
        let userObj = {
-        name: firstLetterBig(newNameData),
+        name: firstLetterBig( newNameData ),
         company: newCompanyData.value.toUpperCase(),
-        address: firstLetterBig(newAddressData),
-        city: firstLetterBig(newCityData),
-        country: firstLetterBig(newCountyData),
+        address: firstLetterBig( newAddressData ),
+        city: firstLetterBig( newCityData ),
+        country: firstLetterBig( newCountyData ),
        };
        createUser(userObj);
     }
