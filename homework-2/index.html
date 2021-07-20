@@ -18,7 +18,7 @@
                 <a class="logo" href="#">Logo Placeholder</a>
                 <div class="header-login">
                     <span class="user">Welcome, user</span>
-                    <button class="user-log-out">Log Out</button>
+                    <button type="button" class="user-log-out">Log Out</button>
                 </div>
             </div>
             <div class="customers">
@@ -32,10 +32,11 @@
             <div class="wrapper-form">
                 <form class="user-form">
                     <h6 class="form-title">Filters</h6>
-                    <input class="user-company" type="text" placeholder="Company Name*">
+                    <input class="user-company" value="" type="text" placeholder="Company Name*">
                     <input class="user-contact" type="text" placeholder="Contact Name*">
                     <input class="user-address" type="text" placeholder="Address*">
-                    <button class="form-btn">
+                    <button type="button" class="filter-user">Filter</button>
+                    <button type="button" class="form-btn">
                         <i class="fas fa-plus"></i>
                     </button>
                 </form>  
@@ -63,6 +64,8 @@
                 <tbody class="table-user"></tbody>
             </table>
         </div>
+        <ul class="pagination">
+        </ul>
     </main>
     <div class="modal">
         <div class="modal-dialog">
@@ -73,7 +76,7 @@
                     <input required value="" name="company" type="text" class="input-company">
                     <input required value="" name="name" type="phone" class="input-name">
                     <input required value="" name="address" type="phone" class="input-address">
-                    <button class="btn btn-dark">Change User</button>
+                    <button type="button" class="btn btn-dark">Change User</button>
                 </form>
             </div>
         </div>
@@ -89,11 +92,11 @@
                     <input required value="" placeholder="Address" name="address" type="phone" class="create-address">
                     <input required value="" placeholder="City" name="city" type="phone" class="create-city">
                     <input required value="" placeholder="Country" name="country" type="phone" class="create-country">
-                    <button class="btn btn-dark post-btn">Create User</button>
+                    <button type="button" class="btn btn-dark post-btn">Create User</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="./script/maim.js"></script>
+    <script type="module" src="./script/maim.js"></script>
 </body>
 </html>
