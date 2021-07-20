@@ -59,6 +59,10 @@
     margin-left: 10px;
 }
 
+main {
+    padding-bottom: 100px;
+}
+
 .wrapper-form {
     width: 100%;
     padding: 20px 40px 40px;
@@ -67,6 +71,18 @@
 
 .user-form {
     position: relative;
+}
+
+.filter-user {
+    height: 40px;
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    background: tomato;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 .wrapper-form .form-title {
@@ -110,7 +126,6 @@
 }
 
 .delete-user {
-    visibility: hidden;
     border: none;
     background: none;
     font-size: 30px;
@@ -137,14 +152,6 @@
    display: none;
 }
 
-
-.tabel-checkbox-first:checked + .box-checkbox,
-.tabel-checkbox:checked + .box-checkbox {
-    background: tomato;
-    border: none;
-}
-
-
 .active {
     background:transparent;
 }
@@ -160,9 +167,11 @@
     position: relative;
 }
 
-.table .table-title .checkbox:first-child {
-    visibility: hidden;
+.checked {
+    background: tomato;
+    border: none;
 }
+
 
 .box-checkbox::after {
     content: '\2714';
@@ -193,6 +202,32 @@
 
 .fa-pen:hover {
     color: blue;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination-list {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    margin: 0 5px;
+    text-align: center;
+    background: #fff;
+    color: #4055b8;
+    font-size: 24px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.active-pagination{
+    background: #4055b8;
+    color: #fff;
 }
 
 .modal { 
@@ -299,5 +334,4 @@
 }
 .active-delete-btn {
     color: tomato;
-    visibility: visible;
 }
