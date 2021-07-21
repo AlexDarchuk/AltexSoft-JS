@@ -1,40 +1,36 @@
-const createВominoesBtn = document.querySelector('.domino-btn');
+const createDominoesBtn = document.querySelector('.domino-btn');
 const topRow = document.querySelector('.domino-up');
 const bottomRow = document.querySelector('.domino-down');
 const compareBtn = document.querySelector('.compare-domino');
 const showAnswer = document.querySelector('.show-answer');
 let negativAnswer;
+let topDominoArray = [];
+let bottomDominoArray = [];
 
 
-function topRandomDomino () {
-    let topDominoArray = [];
-    for(let i = 0; i < 6; i++) {
-        topDominoArray.push(Math.floor(Math.random() * (6 - 1) + 1));
+createDominoesBtn.addEventListener('click', () => {
+
+    if (topDominoArray.length >= 6) {
+        topDominoArray.splice(0, topDominoArray.length);
+        bottomDominoArray.splice(0, bottomDominoArray.length);
+        topRow.innerHTML = '';
+        bottomRow.innerHTML = '';
+        showAnswer.innerHTML = '';
+    } else {
+        for(let i = 1; i <= 6; i++) {
+            topDominoArray.push(Math.floor(Math.random() * (6 - 1) + 1));
+            bottomDominoArray.push(Math.floor(Math.random() * (6 - 1) + 1))
+        }
     }
-    return topDominoArray;
-}
-
-function bottomRandomDomino () {
-    let bottomDominoArray = [];
-    for(let i = 0; i < 6; i++) {
-        bottomDominoArray.push(Math.floor(Math.random() * (6 - 1) + 1));
-    }
-    return bottomDominoArray;
-}
-
-const topDomino = topRandomDomino();
-const bottomDomino = bottomRandomDomino();
-
-createВominoesBtn.addEventListener('click', () => {
     
-    topDomino.forEach((value) => {
+    topDominoArray.forEach((value) => {
         const li = document.createElement('li');
         li.classList.add('domino-up-list');
         li.innerHTML = value;
         topRow.append(li);
     });
     
-    bottomDomino.forEach((value) => {
+    bottomDominoArray.forEach((value) => {
         const li = document.createElement('li');
         li.classList.add('domino-down-list');
         li.innerHTML = value;
@@ -45,6 +41,7 @@ createВominoesBtn.addEventListener('click', () => {
 
 
 function compareDomino (topDomino, bottomDomino) {
+    console.log(topDomino);
     
     for (let i = 1; i <= 6; i++) {
         let totalNumber = 0;
@@ -64,6 +61,7 @@ function compareDomino (topDomino, bottomDomino) {
             return numberOfRotate;
         }
     }
+    
 }
 
 
@@ -77,9 +75,10 @@ function showResult (sameTop, sameBottom ,negativAnswer = -1) {
     return showAnswer.innerHTML = negativAnswer;
 }
 
+
 compareBtn.addEventListener('click', () =>{
-    let sameNumbersTop = compareDomino (topDomino, bottomDomino);
-    let sameNumbersBottom = compareDomino (bottomDomino, topDomino);
-    showResult(sameNumbersTop, sameNumbersBottom, negativAnswer)
+    let sameNumbersTop = compareDomino (topDominoArray, bottomDominoArray);
+    let sameNumbersBottom = compareDomino (bottomDominoArray, topDominoArray);
+     showResult(sameNumbersTop, sameNumbersBottom, negativAnswer)
 });
 
