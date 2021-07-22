@@ -31,7 +31,7 @@ function showTotalMoney( moneyArray ) {
         return acc + value;
     }, 0);
 
-    totalMoney.innerHTML = `Загальна сума грошей ${sum - moneyInput.value}`;
+    totalMoney.innerHTML = `Загальна сума грошей <span>${sum - moneyInput.value}</span>`;
 
     if (sum <= 0) {
         alert('Money is off');
@@ -43,7 +43,7 @@ function renderMoneyPage (obj) {
     for (const key in obj) {
         let sum = +key * obj[key];
         let p = document.createElement('p'); 
-        p.innerHTML = `В банкоматі такі купюри ${key} в кількості ${obj[key]} = ${sum}`;
+        p.innerHTML = `В банкоматі такі купюри <span>${key}</span> в кількості <span>${obj[key]} = ${sum}</span>`;
         bank.append(p);
     }
 }
@@ -100,7 +100,7 @@ moneyBtn.addEventListener('click', () => {
        }
        
     let p = document.createElement('p');
-        p.innerHTML = `ви отримуєте ${renderMoney[key]} банкнот номіналом ${key}`;
+        p.innerHTML = `ви отримуєте <span>${renderMoney[key]}</span> банкнот номіналом <span>${key}</span>`;
         render.append(p);
    };
    console.log(renderMoney);
