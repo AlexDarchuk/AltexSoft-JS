@@ -4,8 +4,6 @@ const moneyInput = document.querySelector('.number-money');
 const moneyBtn = document.querySelector('.money-btn');
 const render = document.querySelector('.render')
 
-let quantityMoney = [];
-
 let limits = {
     1000: 5,
     500: 5,
@@ -16,29 +14,43 @@ let limits = {
 };
 
 
-let quantity = Object.entries(limits);
-
-quantity.forEach((value) => {
-   sum = +value[0] * value[1];
-   quantityMoney.push(sum);
-})
-
-let moneyTotal = quantityMoney.reduce((acc, value) => {
-    return acc + value;
-}, 0)
-
-for (const key in limits) {
-    let sum = +key * limits[key];
-    let p = document.createElement('p');
-    p.innerHTML = `В банкоматі такі купюри ${key} в кількості ${limits[key]} = ${sum}`;
-    bank.append(p);
+function totalMoneyInBank( array = limits ) {
+    let moneyTotal = [];
+    let quantity = Object.entries( array );
+        quantity.forEach((value) => {
+        let sum = +value[0] * value[1];
+        moneyTotal.push(sum);
+     });
+     showTotalMoney(moneyTotal);
 }
 
-totalMoney.innerHTML = `Загальна сума грошей ${moneyTotal - moneyInput.value}`;
+totalMoneyInBank();
 
+function showTotalMoney( moneyArray ) {
+    let sum = moneyArray.reduce((acc, value) => {
+        return acc + value;
+    }, 0);
 
+    totalMoney.innerHTML = `Загальна сума грошей ${sum - moneyInput.value}`;
 
-let iWantToGet = (ammountRequired, limits) => {
+    if (sum <= 0) {
+        alert('Money is off');
+    }
+}
+
+function renderMoneyPage (obj) {
+    bank.innerHTML = '';
+    for (const key in obj) {
+        let sum = +key * obj[key];
+        let p = document.createElement('p'); 
+        p.innerHTML = `В банкоматі такі купюри ${key} в кількості ${obj[key]} = ${sum}`;
+        bank.append(p);
+    }
+}
+
+renderMoneyPage(limits );
+
+let iWantToGet = ( ammountRequired, limits ) => {
 
     function collect(amount, nominals) {
         if (amount === 0) return {};
@@ -66,27 +78,35 @@ let iWantToGet = (ammountRequired, limits) => {
     return collect(ammountRequired, nominals);
 };
 
+
 moneyBtn.addEventListener('click', () => {
-   let geyMoney = moneyInput.value;
-   if (geyMoney < 10) {
+   let getMoney = moneyInput.value;
+   
+   if (getMoney.charAt(getMoney.length-1) != 0) {
+        alert('Доступні лише суми які закінчуються на 0');
+   }
+
+   if (getMoney < 10 ) {
        alert('Від 10 і вище!')
    }
-   let renderMoney = iWantToGet(geyMoney, limits);
-       console.log(renderMoney);
+
+   let renderMoney = iWantToGet(getMoney, limits);
 
    for (const key in renderMoney) {
+       for(const keyLimits in limits) {
+           if ( key === keyLimits ) {
+               limits[keyLimits] = limits[keyLimits] - renderMoney[key];
+           }
+       }
+       
     let p = document.createElement('p');
         p.innerHTML = `ви отримуєте ${renderMoney[key]} банкнот номіналом ${key}`;
         render.append(p);
    };
-
-   
-   if (totalMoney >= 0) {
-       alert('Bank is empty')
-   } else {
-    totalMoney.innerHTML = `Загальна сума грошей ${moneyTotal - moneyInput.value}`;
+   console.log(renderMoney);
 
     moneyInput.value = '';
-   }
-
+    
+    renderMoneyPage(limits);
+    totalMoneyInBank(limits);
 });
