@@ -2,7 +2,8 @@ const bank = document.querySelector('.bank');
 const totalMoney = document.querySelector('.total');
 const moneyInput = document.querySelector('.number-money');
 const moneyBtn = document.querySelector('.money-btn');
-const render = document.querySelector('.render')
+const render = document.querySelector('.render');
+let sum;
 
 let limits = {
     1000: 5,
@@ -27,15 +28,12 @@ function totalMoneyInBank( array = limits ) {
 totalMoneyInBank();
 
 function showTotalMoney( moneyArray ) {
-    let sum = moneyArray.reduce((acc, value) => {
+     sum = moneyArray.reduce((acc, value) => {
         return acc + value;
     }, 0);
 
     totalMoney.innerHTML = `Загальна сума грошей <span>${sum - moneyInput.value}</span>`;
-
-    if (sum <= 0) {
-        alert('Money is off');
-    }
+    
 }
 
 function renderMoneyPage (obj) {
@@ -104,6 +102,11 @@ moneyBtn.addEventListener('click', () => {
         render.append(p);
    };
    console.log(renderMoney);
+   console.log(sum);
+
+    if (sum <= 0) {
+        alert('Money is off');
+    }
 
     moneyInput.value = '';
     
