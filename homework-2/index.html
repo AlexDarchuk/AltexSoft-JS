@@ -43,25 +43,25 @@
             </div>
         </div>
         <div class="container">
-            <table class="table">
-                <thead class="table-name">
-                    <tr class="table-info">
-                        <th class="table-title">
+            <table class="tabel">
+                <thead class="tabel-name">
+                    <tr class="tabel-info">
+                        <th class="tabel-title">
                             <label class="checkbox">
                                 <input class="tabel-checkbox-first" name="user-checkbox" type="checkbox">
-                                <span class="box-checkbox"></span>
+                                <span class="box-checkbox-first"></span>
                             </label>
                         </th>
-                        <th class="table-title">Company Name</th>
-                        <th class="table-title">Contact Name</th>
-                        <th class="table-title">Address</th>
-                        <th class="table-title">City</th>
-                        <th class="table-title">Country</th>
-                        <th class="table-title"></th>
-                        <th class="table-title"></th>
+                        <th class="tabel-title">Company Name</th>
+                        <th class="tabel-title">Contact Name</th>
+                        <th class="tabel-title">Address</th>
+                        <th class="tabel-title">City</th>
+                        <th class="tabel-title">Country</th>
+                        <th class="tabel-title"></th>
+                        <th class="tabel-title"></th>
                     </tr>
                 </thead>
-                <tbody class="table-user"></tbody>
+                <tbody class="tabel-user"></tbody>
             </table>
         </div>
         <ul class="pagination">
@@ -74,8 +74,8 @@
                     <div class="modal-close"><i class="fas fa-times"></i></div>
                     <div class="modal-title">Method PATCH</div>
                     <input required value="" name="company" type="text" class="input-company">
-                    <input required value="" name="name" type="phone" class="input-name">
-                    <input required value="" name="address" type="phone" class="input-address">
+                    <input required value="" name="name" type="tel" class="input-name">
+                    <input required value="" name="address" type="tel" class="input-address">
                     <button type="button" class="btn btn-dark">Change User</button>
                 </form>
             </div>
@@ -88,15 +88,15 @@
                     <div class="modal-close"><i class="fas fa-times"></i></div>
                     <div class="modal-title">Method POST</div>
                     <input required value="" placeholder="Name" name="name" type="text" class="create-name">
-                    <input required value="" placeholder="Company" name="company" type="phone" class="create-company">
-                    <input required value="" placeholder="Address" name="address" type="phone" class="create-address">
-                    <input required value="" placeholder="City" name="city" type="phone" class="create-city">
-                    <input required value="" placeholder="Country" name="country" type="phone" class="create-country">
+                    <input required value="" placeholder="Company" name="company" type="tel" class="create-company">
+                    <input required value="" placeholder="Address" name="address" type="tel" class="create-address">
+                    <input required value="" placeholder="City" name="city" type="tel" class="create-city">
+                    <input required value="" placeholder="Country" name="country" type="tel" class="create-country">
                     <button type="button" class="btn btn-dark post-btn">Create User</button>
                 </form>
             </div>
         </div>
     </div>
-    <script type="module" src="./script/maim.js"></script>
+    <script type="module" src="./script/main.js"></script>
 </body>
 </html>

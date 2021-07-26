@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
     
-    const tableUser = document.querySelector('.table-user');
+    const tabelUser = document.querySelector('.tabel-user');
     const modal = document.querySelector('.modal');
     const closeBtn = document.querySelectorAll('.fa-times');
     const checkboxFirst = document.querySelector('.tabel-checkbox-first');
@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const newAddressData = document.querySelector('.create-address');
     const newCityData = document.querySelector('.create-city');
     const newCountyData = document.querySelector('.create-country');
-    const allCheckbox = document.querySelector('.box-checkbox');
+    const allCheckbox = document.querySelector('.box-checkbox-first');
     const paginationPage = document.querySelector('.pagination')
     let secondaryCheckbox;
     let deleteBtn;
@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             paginationUser(data); 
         });
-
+        
 
     filterUserBtn.addEventListener('click', () => {
         getAllUsers(url)
@@ -113,11 +113,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 renderUserInfo(filterDataAddress);
 
-                paginationPage.style.display = 'none';
 
                 if (!userFilterCompany.value && !userFilterName.value && !userFilterAddress.value) {
                     showPage(navigationBtn[0], data);
-                    paginationPage.style.display = 'flex';
+                    
                 }
         });
     });
@@ -178,24 +177,24 @@ window.addEventListener('DOMContentLoaded', () => {
     
 
     function renderUserInfo(value) {
-        tableUser.innerHTML = '';
+        tabelUser.innerHTML = '';
 
         value.forEach(( {company, name, address, city, country} ) => {
-            tableUser.innerHTML += `
-                <tr class="table-user-info">
-                    <td class="table-user-list">
+            tabelUser.innerHTML += `
+                <tr class="tabel-user-info">
+                    <td class="tabel-user-list">
                     <label class="checkbox">
                         <input class="tabel-checkbox" name="user-checkbox" type="checkbox">
                         <span class="box-checkbox "></span>
                     </label>
                     </td>
-                    <td class="table-user-list">${company}</td>
-                    <td class="table-user-list">${name}</td>
-                    <td class="table-user-list">${address}</td>
-                    <td class="table-user-list">${city}</td>
-                    <td class="table-user-list">${country}</td>
-                    <td class="table-user-list"><i class="fas fa-pen"></i></td>
-                    <td class="table-user-list"><button type="button" class="delete-user"><i class="fas fa-times-circle"></i></button></td>
+                    <td class="tabel-user-list">${company}</td>
+                    <td class="tabel-user-list">${name}</td>
+                    <td class="tabel-user-list">${address}</td>
+                    <td class="tabel-user-list">${city}</td>
+                    <td class="tabel-user-list">${country}</td>
+                    <td class="tabel-user-list"><i class="fas fa-pen"></i></td>
+                    <td class="tabel-user-list"><button type="button" class="delete-user"><i class="fas fa-times-circle"></i></button></td>
                 </tr>
             `;
             
@@ -209,13 +208,13 @@ window.addEventListener('DOMContentLoaded', () => {
         secondaryCheckbox.forEach(( item, index ) => {
                 item.addEventListener('click', () => {
                     if ( !item.classList.contains('checked') ) {
-                        item.classList.add('checked')
-                        deleteBtn[index-1].classList.add('active-delete-btn');
+                        item.classList.add('checked');
+                        deleteBtn[index].classList.add('active-delete-btn');
                         deleteData( deleteBtn, dataIdUser );
                         return;
                     } else {
                         item.classList.remove('checked')
-                        deleteBtn[index-1].classList.remove('active-delete-btn');
+                        deleteBtn[index].classList.remove('active-delete-btn');
                     }
                     
                 });
