@@ -17,7 +17,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const newCityData = document.querySelector('.create-city');
     const newCountyData = document.querySelector('.create-country');
     const allCheckbox = document.querySelector('.box-checkbox-first');
-    const paginationPage = document.querySelector('.pagination')
+    const paginationPage = document.querySelector('.pagination');
+    const deleteAllUsersBtn = document.querySelector('.delete-user-first');
+
     let secondaryCheckbox;
     let deleteBtn;
     let checkboxBtn;
@@ -93,14 +95,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         return await update.json();
     }
-
-
-
+    
 
     getAllUsers(url)
         .then(value => value.reverse())
         .then(data => {
-            paginationUser(data); 
+            paginationUser(data);   
         });
         
 
@@ -110,14 +110,12 @@ window.addEventListener('DOMContentLoaded', () => {
                 let filterDataCompany = data.filter(value => value.company.startsWith( userFilterCompany.value.toUpperCase() ));
                 let filterDataName = filterDataCompany.filter(value => value.name.startsWith(userFilterName.value.toUpperCase()));
                 let filterDataAddress = filterDataName.filter(value => value.address.startsWith(userFilterAddress.value.toUpperCase()));
-
+                
                 renderUserInfo(filterDataAddress);
-
-
+                
                 if (!userFilterCompany.value && !userFilterName.value && !userFilterAddress.value) {
-                    showPage(navigationBtn[0], data);
-                    
-                }
+                    showPage(navigationBtn[0], data);     
+                } 
         });
     });
 
@@ -194,7 +192,11 @@ window.addEventListener('DOMContentLoaded', () => {
                     <td class="tabel-user-list">${city}</td>
                     <td class="tabel-user-list">${country}</td>
                     <td class="tabel-user-list"><i class="fas fa-pen"></i></td>
-                    <td class="tabel-user-list"><button type="button" class="delete-user"><i class="fas fa-times-circle"></i></button></td>
+                    <td class="tabel-user-list">
+                    <button type="button" class="delete-user">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                    </td>
                 </tr>
             `;
             
@@ -228,13 +230,16 @@ window.addEventListener('DOMContentLoaded', () => {
             allCheckbox.classList.add('checked');
             e.target.classList.add('checked');
             deleteBtn.forEach(deleteBtn => deleteBtn.classList.add('active-delete-btn'));
+            deleteAllUsersBtn.classList.add('active-delete-btn');
             checkboxBtn.forEach(checkbox => checkbox.checked = 'true');
             secondaryCheckbox.forEach(checkBnt => checkBnt.classList.add('checked'));
+            deleteAllUsers(dataIdUser);
         } else {
             allCheckbox.classList.remove('checked');
             checkboxBtn.forEach(checkbox => checkbox.checked = 'false');
             deleteBtn.forEach(deleteBtn => deleteBtn.classList.remove('active-delete-btn'));
             secondaryCheckbox.forEach(checkBnt => checkBnt.classList.remove('checked'));
+            deleteAllUsersBtn.classList.remove('active-delete-btn');
         }
     });
 
@@ -270,10 +275,28 @@ window.addEventListener('DOMContentLoaded', () => {
         btn.forEach(( item, index ) => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
-              deleteUser(dataIdUser[index]); 
+                if (item.classList.contains('active-delete-btn')) {
+                    deleteUser(dataIdUser[index]); 
+                } else {
+                    return;
+                } 
             });
         });
     };
+
+    function deleteAllUsers (usersArray) {
+        deleteAllUsersBtn.addEventListener('click', (event) => {
+            if (deleteAllUsersBtn.classList.contains('active-delete-btn')) {
+                usersArray.forEach(id => {
+                    deleteUser(id);
+                });
+            } else {
+                return;
+            }
+            
+        });
+    }
+    
 
     updateUserBtn.addEventListener('click' , (e) => {
         e.preventDefault();
