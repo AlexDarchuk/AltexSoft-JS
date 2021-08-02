@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoUSers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-user">
+                <a class="logo" href="#">Logo Placeholder</a>
+                <div class="header-login">
+                    <span class="user">Welcome, user</span>
+                    <button type="button" class="user-log-out">Log Out</button>
+                </div>
+            </div>
+            <div class="customers">
+                <i class="fas fa-user-friends"></i>
+                <p class="customers-text">Customers</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="wrapper-form">
+                <form class="user-form">
+                    <h6 class="form-title">Filters</h6>
+                    <input class="user-company" value="" type="text" placeholder="Company Name*">
+                    <input class="user-contact" type="text" placeholder="Contact Name*">
+                    <input class="user-address" type="text" placeholder="Address*">
+                    <button type="button" class="filter-user">Filter</button>
+                    <button type="button" class="form-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </form>  
+            </div>
+        </div>
+        <div class="container">
+            <table class="tabel">
+                <thead class="tabel-name">
+                    <tr class="tabel-info">
+                        <th class="tabel-title">
+                            <label class="checkbox">
+                                <input class="tabel-checkbox-first" name="user-checkbox" type="checkbox">
+                                <span class="box-checkbox-first"></span>
+                            </label>
+                        </th>
+                        <th class="tabel-title">Company Name</th>
+                        <th class="tabel-title">Contact Name</th>
+                        <th class="tabel-title">Address</th>
+                        <th class="tabel-title">City</th>
+                        <th class="tabel-title">Country</th>
+                        <th class="tabel-title"></th>
+                        <th class="tabel-title">
+                            <button type="button" class="delete-user-first">
+                                <i class="fas fa-times-circle"></i>
+                            </button>
+                        </th>
+                    </tr>
+                    
+                </thead>
+                <tbody class="tabel-user"></tbody>
+            </table>
+        </div>
+        <ul class="pagination">
+        </ul>
+    </main>
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="#">
+                    <div class="modal-close"><i class="fas fa-times"></i></div>
+                    <div class="modal-title">Method PATCH</div>
+                    <input required value="" name="company" type="text" class="input-company">
+                    <input required value="" name="name" type="tel" class="input-name">
+                    <input required value="" name="address" type="tel" class="input-address">
+                    <button type="button" class="btn btn-dark">Change User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-create-user">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="#">
+                    <div class="modal-close"><i class="fas fa-times"></i></div>
+                    <div class="modal-title">Method POST</div>
+                    <input required value="" placeholder="Name" name="name" type="text" class="create-name">
+                    <input required value="" placeholder="Company" name="company" type="tel" class="create-company">
+                    <input required value="" placeholder="Address" name="address" type="tel" class="create-address">
+                    <input required value="" placeholder="City" name="city" type="tel" class="create-city">
+                    <input required value="" placeholder="Country" name="country" type="tel" class="create-country">
+                    <button type="button" class="btn btn-dark post-btn">Create User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./script/main.js"></script>
+</body>
+</html>
