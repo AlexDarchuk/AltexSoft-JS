@@ -1,0 +1,24 @@
+.domino {
+    padding: 100px;
+}
+
+.domino-up,
+.domino-down {
+    display: flex;
+    list-style: none;
+}
+
+.domino-up-list,
+.domino-down-list {
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 23px;
+    margin-right: 20px;
+    border: 2px solid #000;
+}
+.show-answer {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 15px;
+}
